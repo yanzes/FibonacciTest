@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+<body>
+    <h1>Calculadora de Fibonacci</h1>
+    <label for="numero">Ingresa un número:</label>
+    <input type="number" id="numero" min="0" placeholder="0">
+    <button onclick="calcularFibonacci()">Calcular</button>
+
+    <p id="resultado"></p> <!-- Elemento para mostrar el resultado -->
+
+    <script>
+        function fibonacci(num) {
+            const fib = [0, 1];
+
+            for (let i = 2; i <= num; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+
+            return fib[num];
+        }
+
+        function calcularFibonacci() {
+            const num = parseInt(document.getElementById('numero').value); // Obtener el número ingresado
+            if (isNaN(num) || num < 0) {
+                document.getElementById('resultado').textContent = 'Por favor, ingresa un número válido.';
+            } else {
+                const resultado = fibonacci(num); // Calcular Fibonacci
+                document.getElementById('resultado').textContent = `El valor de Fibonacci(${num}) es: ${resultado}`;
+            }
+        }
+    </script>
+</body>
+</html>
